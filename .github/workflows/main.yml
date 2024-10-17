@@ -1,0 +1,29 @@
+name: Python application
+
+on:
+  push:
+    branches:
+      - main  # أو اسم الفرع الذي تستخدمه
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # يمكنك اختيار الإصدار الذي تريده
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # إذا كان لديك ملف requirements.txt، قم بتثبيته هنا
+        # pip install -r requirements.txt
+
+    - name: Run deep.py
+      run: |
+        python deep.py  # تشغيل ملف deep.py
